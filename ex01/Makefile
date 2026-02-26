@@ -1,11 +1,11 @@
-NAME = ScavTrap
+NAME = Animal
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS = main.cpp Dog.cpp Cat.cpp Animal.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

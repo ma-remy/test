@@ -1,30 +1,36 @@
-#include "ScavTrap.hpp"
+#include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
 int main()
 {
-    std::cout << "=== Construction ===" << std::endl;
-    ScavTrap a("Ziko");
-    ScavTrap b("Mery");
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    delete j;//should not create a leak
+    delete i;
 
-    std::cout << "\n=== Attack ===" << std::endl;
-    a.attack(b.getName());
+    std::cout << std::endl;
+    std::cout << "===== Array of Animals =====" << std::endl;
+    const int size = 10;
+    Animal* animals[size];
 
-    std::cout << "\n=== Take Damage ===" << std::endl;
-    b.takeDamage(30);
+    for (int k = 0; k < size; k++)
+    {
+        if (k < size / 2)
+            animals[k] = new Dog();
+        else
+            animals[k] = new Cat();
+    }
 
-    std::cout << "\n=== Repair ===" << std::endl;
-    b.beRepaired(10);
+    std::cout << std::endl;
+    std::cout << "===== Deleting Array =====" << std::endl;
+    for (int k = 0; k < size; k++)
+        delete animals[k];
 
-    std::cout << "\n=== Guard Gate ===" << std::endl;
-    a.guardGate();
+    std::cout << std::endl;
+    std::cout << "===== Deep Copy Test =====" << std::endl;
+    Dog original;
+    Dog copy(original);
 
-    std::cout << "\n=== Copy Constructor ===" << std::endl;
-    ScavTrap c(a);
-
-    std::cout << "\n=== Copy Assignment ===" << std::endl;
-    ScavTrap d("Temp");
-    d = b;
-
-    std::cout << "\n=== Destruction (reverse order) ===" << std::endl;
     return 0;
 }

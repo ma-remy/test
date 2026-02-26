@@ -1,11 +1,11 @@
-NAME = FragTrap
+NAME = AAnimal
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRCS = main.cpp ClapTrap.cpp FragTrap.cpp
+SRCS = main.cpp Dog.cpp Cat.cpp AAnimal.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
